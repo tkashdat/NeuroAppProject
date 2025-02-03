@@ -1,7 +1,10 @@
 # Neuroscience MRI Application Project
 
 Author: Tiffany Kashima
+
 Arizona State University
+
+CAS502: Computation (Professor Julia Damerow) Spring 2025
 
 This project produces MRI images from a dataset and allows the user to control the plane of view, orientation, contrast, and smoothing algorithm.  Future feature set includes the ability to allow user upload of a dataset with data validation.
 
