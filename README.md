@@ -17,3 +17,16 @@ Challenges anticipated: MRI data is stored in a variety of files formats, typica
 Communication Plan: All feature requests, potential and actual bugs, testing, research, and documentation will be added as issues and tagged appropraitely.  While there is only one person authoring this project, there is collaboration with outside sources such as the course Professor, authors of the resources being used, etc.  I will assign myself to each ticket, but also note any outside resources also being consulted.  This creates a system of transparent and fair attribution.  I will use a lite version of agile inspired project management, utlizing a kanban board in Trello to organize, track, and and assign status with pull requests, issues, and commits from git hub (using GitHub Power-Up).
 
 Branches: For each ticket on Trello, I will create a branch.  When each ticket is complete, I will create a pull request into main with the same good software egineering practices of code review and testing.  It is important to demonstrate that changes are not directly merged into main without a pull request.  
+
+Dataset used: A high-density diffuse optical tomography dataset of naturalistic viewing (Arefeh Sherafati*, Aahana Bajracharya*, Michael S. Jones, Emma Speh, Monalisa Munsi, Chen Hao Lin, Andrew K. Fishell, Tamara Hershey, Adam Eggebrecht, Joseph P. Culver, Jonathan E. Peelle, 2023)
+
+Arefeh Sherafati* and Aahana Bajracharya* and Michael S. Jones and Emma Speh and Monalisa Munsi and Chen Hao Lin and Andrew K. Fishell and Tamara Hershey and Adam Eggebrecht and Joseph P. Culver and Jonathan E. Peelle (2023). A high-density diffuse optical tomography dataset of naturalistic viewing. OpenNeuro. [Dataset] doi: doi:10.18112/openneuro.ds004569.v1.0.0
+
+DOI: [doi:10.18112/openneuro.ds004569.v1.0.0](doi:10.18112/openneuro.ds004569.v1.0.0)
+
+Data obtained from OpenNEURO [https://openneuro.org/datasets/ds004569/versions/1.0.0](https://openneuro.org/datasets/ds004569/versions/1.0.0)
+under a Creative Commons license.  
+
+Data downloaded and managed from OpenNEURO using Datalad (v1.1.4) package for Python (v 3.12)
+[https://www.datalad.org/](https://www.datalad.org/)
+
