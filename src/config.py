@@ -1,0 +1,1 @@
+# PATHs and variables used across the app project
