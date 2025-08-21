@@ -34,4 +34,3 @@ under a Creative Commons license.
 
 Data downloaded and managed from OpenNEURO using Datalad (v1.1.4) package for Python (v 3.12)
 [https://www.datalad.org/](https://www.datalad.org/)
-

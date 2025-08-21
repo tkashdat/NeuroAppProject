@@ -1,1 +1,2 @@
-#custom functions for use across the app project
+#custom functions for use across the project
+
