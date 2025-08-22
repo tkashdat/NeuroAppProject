@@ -3,11 +3,7 @@ import imageio as iio
 
 def loadStudy():
     filename = input("Enter path to study folder: ")
-    try:
-        vol = iio.volread(filename)
-        vol.meta['Modality'] == 'MR'
-    except TypeError:
-        print("Not the correct modality type.  Uploaded study should be MRI image data")
+    vol = iio.volread(filename, 'DICOM')
     
-    return(vol.meta['SeriesDescription'],vol.meta['Series Date'],vol.shape)
+    return(vol.meta['SeriesDescription'],vol.meta['SeriesDate'],vol.shape)
 
