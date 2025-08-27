@@ -1,14 +1,16 @@
 #custom functions for use across the project
 import matplotlib.pyplot as plt
+import scipy.ndimage as ndi
 
 def showSlice(fileName):
-    sliceNum = input("What slice would you like to view?")
-    sliceNum = int(sliceNum)
-    while True:
+    while True: 
+        printSlices(fileName)
+        sliceNum = int(input("What number slice would you like in saggital view?"))
+        #sliceNum = int(sliceNum)
         if sliceNum <= fileName.shape[0]:
             plt.imshow(fileName[sliceNum,:,:])
             plt.axis('off')
-            plt.title(f"This is slice number {sliceNum} in axial view in standard color tone")
+            plt.title(f"This is slice number {sliceNum} in saggital view in standard color tone")
             plt.show()
             break
         else:
@@ -18,55 +20,63 @@ def showSlice(fileName):
 def metaData(fileName):
     return(fileName.meta.keys())
 
+def printSlices(fileName):
+    x,y,z = fileName.shape
+    return(f"Number of slices per view: Saggital: {x}, Axial: {y}, Coronal: {z}")
+
 def numSlices(fileName):
     x,y,z = fileName.shape
-    print(f"Number of slices per view: Axial: {x}, Coronal: {y}, Transverse: {z}")
-    return(x, y, z)
+    return(x,y,z)
 
 def pickSliceAxis(fileName):
-
     n0, n1, n2 = fileName.shape
-    sliceNum = input("Specifiy the slice number you would like to view: ")
-    sliceNum = int(sliceNum)
-    axis = input("Specify which axis you would like to view (axial, coronal, transverse): ")
+    printSlices(fileName)
+    axis = input("Specify which axis you would like to view (saggital, axial, coronal: ").lower()
+    sliceNum = int(input("Specifiy the slice number you would like to view: "))
     
-    if axis == "axial" and sliceNum <= n0:
+    if axis == "saggital" and sliceNum <= n0:
         plt.imshow(fileName[sliceNum,:,:], cmap='bone')
         plt.axis('off')
+        plt.title(f"This is slice number {sliceNum} in {axis} view in bone color map")
         plt.show()
 
-    if axis == "coronal" and sliceNum <= n1:
-        plt.imshow(fileName[:,sliceNum,:], cmap='bone')
+    elif axis == "axial" and sliceNum <= n1:
+        plt.imshow(ndi.rotate(fileName[:,sliceNum,:],270), cmap='bone')
         plt.axis('off')
+        plt.title(f"This is slice number {sliceNum} in {axis} view in bone color map")
         plt.show()
 
-    if axis == "transverse" and sliceNum <= n2:
-        plt.imshow(fileName[:,:,sliceNum], cmap='bone')
+    elif axis == "coronal" and sliceNum <= n2:
+        plt.imshow(ndi.rotate(fileName[:,:,sliceNum],270), cmap='bone')
         plt.axis('off')
+        plt.title(f"This is slice number {sliceNum} in {axis} view in bone color map")
         plt.show()
 
     else:
         print("Invalid entry")
 
 def completeSlice(fileName, color):
-
     n0, n1, n2 = fileName.shape
-    sliceNum = input("Specifiy the slice number you would like to view: ")
-    sliceNum = int(sliceNum)
-    axis = input("Specify which axis you would like to view (axial, coronal, transverse): ")
+    printSlices(fileName)
+    axis = input("Specify which axis you would like to view (saggital, axial, coronal): ").lower()
+    sliceNum = int(input("Specifiy the slice number you would like to view: "))
+    #sliceNum = int(sliceNum)
     
-    if axis == "axial" and sliceNum <= n0:
+    if axis == "saggital" and sliceNum <= n0:
         plt.imshow(fileName[sliceNum,:,:], cmap=color)
+        plt.title(f"This is slice number {sliceNum} in {axis} view in color map {color}")
         plt.axis('off')
         plt.show()
 
-    if axis == "coronal" and sliceNum <= n1:
-        plt.imshow(fileName[:,sliceNum,:], cmap=color)
+    elif axis == "axial" and sliceNum <= n1:
+        plt.imshow(ndi.rotate(fileName[:,sliceNum,:],270), cmap=color)
+        plt.title(f"This is slice number {sliceNum} in {axis} view in color map {color}")
         plt.axis('off')
         plt.show()
 
-    if axis == "transverse" and sliceNum <= n2:
-        plt.imshow(fileName[:,:,sliceNum], cmap=color)
+    elif axis == "coronal" and sliceNum <= n2:
+        plt.imshow(ndi.rotate(fileName[:,:,sliceNum],270), cmap=color)
+        plt.title(f"This is slice number {sliceNum} in {axis} view in color map {color}")
         plt.axis('off')
         plt.show()
 
@@ -75,7 +85,7 @@ def completeSlice(fileName, color):
 
 def sliceColor():
     colors = ('gray', 'jet', 'bone')
-    user_input = input("Choose color: gray, jet, or bone")
+    user_input = input("Choose color: gray, jet, or bone").lower()
     if user_input in colors:
         return(user_input)
     else:
@@ -86,7 +96,7 @@ def getAspectRatio(fileName):
     axial_asp = d1/d2
     saggital_asp = d0/d1
     coronal_asp = d0/d2
-    return (axial_asp, coronal_asp, saggital_asp)
+    return (saggital_asp, coronal_asp, axial_asp)
 
 
 

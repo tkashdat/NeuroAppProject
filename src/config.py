@@ -1,1 +1,0 @@
-# PATHs and variables used across the project
