@@ -7,3 +7,6 @@ def loadStudy():
     
     return(vol.meta['SeriesDescription'],vol.meta['SeriesDate'],vol.shape)
 
+def loadVolume():
+    vol = iio.volread("/Users/tiffanykashima/NeuroAppProject/data/DICOM")
+    return(vol)

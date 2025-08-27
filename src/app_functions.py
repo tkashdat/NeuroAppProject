@@ -13,6 +13,7 @@ def metaData(fileName):
 def numSlices(fileName):
     x,y,z = fileName.shape
     print(f"Number of slices per view: Axial: {x}, Coronal: {y}, Transverse: {z}")
+    return(x, y, z)
 
 def pickSliceAxis(fileName):
 
@@ -51,4 +52,12 @@ def sliceColor(promptMessage):
             print("That is not a valid entry")
             continue
 
-    
+def getAspectRatio(fileName):
+    d0, d1, d2 = fileName.meta['sampling']
+    axial_asp = d1/d2
+    saggital_asp = d0/d1
+    coronal_asp = d0/d2
+    return (axial_asp, coronal_asp, saggital_asp)
+
+
+
