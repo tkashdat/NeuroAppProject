@@ -30,7 +30,7 @@ def numSlices(fileName):
 
 def pickSliceAxis(fileName):
     n0, n1, n2 = fileName.shape
-    printSlices(fileName)
+    #printSlices(fileName)
     axis = input("Specify which axis you would like to view (saggital, axial, coronal: ").lower()
     sliceNum = int(input("Specifiy the slice number you would like to view: "))
     
@@ -57,7 +57,7 @@ def pickSliceAxis(fileName):
 
 def completeSlice(fileName, color):
     n0, n1, n2 = fileName.shape
-    printSlices(fileName)
+    #printSlices(fileName)
     axis = input("Specify which axis you would like to view (saggital, axial, coronal): ").lower()
     sliceNum = int(input("Specifiy the slice number you would like to view: "))
     #sliceNum = int(sliceNum)

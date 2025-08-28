@@ -33,6 +33,11 @@ The notebook and python files were written and tested in Python 3.11 with the fo
   - matplotlib.pyplot
   - Ipython.display
   - scipy.ndimage
+  - unittest
+
+## Installation
+
+Download all files in src folder as well as dataset in data_public folder.  Download environment file (neuro_dataascience_env.yml) from envs folder.  Store in the same local or cloud directory.  Ensure python and dependencies are installed in notebook environment before running scripts and jupyter notebook.  Ensure dataset path is accessible to notebook. 
 
 ## User Guide
 
@@ -43,11 +48,56 @@ The notebook and python files were written and tested in Python 3.11 with the fo
         Example input: "Users/usr/folder/data/DICOM"
         Output: A numpy array, a dictionary of meta data from its 'meta' attributes.
 2. app_functions
-    - showSlice(fileName (string: name of object assigned from loadVolume()))
+    - showSlice(fileName: string)
         Takes user input (integer value) for a single slice in the saggital plane to display (default cmap).  Input must be an integer in range of the available slices in the saggital plane for specified study (fileName).  Uses matplotlib.
         Example usage: showSlice(myStudy)
-    - 
+    - metaData(fileName: string)
+        Takes a processed DICOM file (from loadVolume() method).  
+        Example usage: metaData(myStudy)
+        Output: Returns the key values from the meta data dictionary for the study volume.
+    - printSlices(fileName: string)
+        Takes a processed DICOM file (from loadVolume() method). Uses the shape method to store the number of slices (integer) in the study by plane (saggital, coronal, axial) into three variables, respectively.  
+        Example usage: printSlices(myStudy)
+        Output: A print statement displaying the number of slices per plane.
+    - numSlices(fileName: string)
+        Takes a processed DICOM file (from loadVolume() method). Uses the shape method to store the number of slices (integer) in the study by plane (saggital, coronal, axial) into three variables, respectively.
+        Example usage: numSlices(myStudy)
+        Output: Three variables: x, y, z assigned to the number of slices in the (saggital, coronal, axial) plane.
+    - pickSliceAxis (fileName: string)
+        Takes a processed DICOM file (from loadVolume() method).  Takes user input (string value) for one specific plane (axis): saggital, coronal, or axial.  Takes additional user input (integer value) for the number slice to view.  Value must be less than or equal to the number of slices.  Uses matplotlib to create a slice graphic based on the user input in the 'bone' color map.
+        Example usage: pickSliceAxis(myStudy)
+        Output: matplotlib figure of selected slice and plane.
+    - completeSlice(fileName: string)
+        Takes a processed DICOM file (from loadVolume() method).  Takes user input (string value) for one specific plane (axis): saggital, coronal, or axial.  Takes user input (integer value) for the number slice to view.  Value must be less than or equal to the number of slices.  Takes user input (string value) for one color map (cmap) option ('jet', 'bone', 'gray') to use in rendering the slice figure.  Uses matplotlib to create a slice graphic based on the user input in the specified color map.
+        Example usage: completeSlice(myStudy)
+        Output: matplotlib figure of selected slice and plane and cmap choice.
+    - sliceColor()
+        Prompts the user to input the name of a color map to use in matplotlib methods in generating MRI image figures.  Must be 'jet' (color), 'bone' (darker greyscale), or 'gray' (light grayscale).  Input must be a string value.
+        No arguments.
+        Output: Valis user colormap choice as a string value.
+    - getAspectRatio(fileName: string)
+        Takes a processed DICOM file (from loadVolume() method). Stores the float values from the 'sampling' key from the metadata dictionary for fileName into three variables, respectively.  These values represent physical distances used in the MRI scan process.  These values can be used to re-create the correct aspect ratios in each plane (saggital, coronal, axial) for viewing slices.
+        Example usage: getAspectRatio(myStudy)
+        Output: Three variables (float values) that store the correct aspect ratio for the saggital, coronal, and axial planes, respectively.
+3. Ipywidget in neuroapp.ipynb
+    - imageViewer(color='bone':string, saggital=50: integer, axial=175: integer, coronal=150: integer)
+        This function is passed into the ipywidget.interactive method to create an example of a dynamically updated image viewer "application."  Takes three arguments: color (storing, default='bone'), saggital (integer, default=50), coronal (integer, default=150, axial (integer, default=150)). The default values of the arguments render a slice at these values when the widget is loaded.  This is hard coded example using the DICOM study uplaoded by loadVolume() and stored into the myStudy variable in the example notebook. Uses matplotlib to generate three ax objects for a selected slice and color map in the three different planes to be viewed simutaneously.
+    - widget
+        Allows user to select from a drop down menu of color map options and to select a slice from a slider in each plane.  Three MRI images are displated and dynamically updated based on these inputs.
 
+## Unit Testing
+
+The test_functions.py file contains example unit tests on the app methods in app_functions.py.  Requires unittest library.  
+
+## Feature Requests and Bugs
+
+Please submit feature requests and bugs as an issue in the project repository.  
+
+Please submit any individual questions or concerns to Tiffany Kashima @ tkashima@asu dot edu.
+
+## Known Issues
+
+The ipynotebook application in the notebook is hard coded to dataset and its assigned variable, as an example to show functionality.  In the future version, this function would also take user input for a study file. 
 
 ## Challenges anticipated
  MRI data is stored in a variety of files formats, typically depending on the context in which the data is being used.  For example, in most medical and healthcare settings, MRI image data is in DICOM (Digital Imaging and Communications in Medicine) format, while in the reserach setting, a common format is NIFTI (Neuroimaging Informatics Technology Initiative).  Metadata for the images is stored in a separate header, which can be in TSV or JSON, as well.  Thus, allowing user input allows first a validation of the data type since it is only reasonable in the scope of this project to allow only one or two formats, and then a further check on the integrity of the data set itself.  The degree of data validation could be quite complex in applications in the "real-world," so a major part of the challenge will be controlling scope creep in this area and documenting the trade-offs and decision making process in implementing this feature.
