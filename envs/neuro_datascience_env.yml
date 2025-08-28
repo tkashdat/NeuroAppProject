@@ -4,7 +4,6 @@ channels:
 dependencies:
   - python
   - notebook
-  - jupyterlab
   - ipywidgets
   - imageio
   - matplotlib.pyplot
