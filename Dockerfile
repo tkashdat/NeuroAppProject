@@ -15,11 +15,11 @@ RUN echo "source activate myenv" > ~/.bashrc
 ENV PATH=/opt/conda/envs/myenv/bin:$PATH
 
 # currently set up for flask app, will change later****
-COPY app.py /app
-COPY templates/index.html /app/templates/
+COPY src /app/src
+COPY public_data/DICOM /app/public_data/DICOM
 
 #tell the port number the container should expose (currently set for flask)****
-EXPOSE 5000
+EXPOSE 8888
 
-#run the application (will change later)****
-CMD ["python", "/app/app.py"]
+#run the application
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]

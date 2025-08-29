@@ -19,6 +19,7 @@ def showSlice(fileName):
             break
         else:
             print("Not a valid slice number")
+            return "Not a valid slice number"
             continue
 
 def metaData(fileName):
@@ -127,6 +128,7 @@ def sliceColor():
         return(user_input)
     else:
         print("That is not a valid entry")
+        return "That is not a valid entry"
 
 def getAspectRatio(fileName):
     """

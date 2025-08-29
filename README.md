@@ -37,7 +37,25 @@ The notebook and python files were written and tested in Python 3.11 with the fo
 
 ## Installation
 
-Download all files in src folder as well as dataset in data_public folder.  Download environment file (neuro_dataascience_env.yml) from envs folder.  Store in the same local or cloud directory.  Ensure python and dependencies are installed in notebook environment before running scripts and jupyter notebook.  Ensure dataset path is accessible to notebook. 
+Download all files in src folder as well as dataset in data_public folder.  Download environment file (neuro_dataascience_env.yml) from envs folder.  Store in the same local or cloud directory.  Ensure python and dependencies are installed in notebook environment before running scripts and jupyter notebook.  Ensure dataset path is accessible to notebook. Refer to File Structure below in the next section.
+
+# File Structure
+
+project----
+            src----
+                    app_functions.py
+                    data_loading_functions.py
+                    neuroapp.ipynb
+            tests----
+                    test_functions.py
+            public_data----
+                            DICOM----
+                                    *.dcm
+            envs----
+                    neuro_datascience_env.yml
+            Dockerfile
+            README.md
+            LICENSE.md
 
 ## User Guide
 
@@ -87,7 +105,7 @@ Download all files in src folder as well as dataset in data_public folder.  Down
 
 ## Unit Testing
 
-The test_functions.py file contains example unit tests on the app methods in app_functions.py.  Requires unittest library.  
+The test_functions.py file contains example unit tests on the app methods in app_functions.py.  Requires unittest library.  Can be launched from the terminal using "python3 -m test_functions" from the test directory.  
 
 ## Feature Requests and Bugs
 
@@ -121,3 +139,11 @@ under a Creative Commons license.
 
 Data downloaded and managed from OpenNEURO using Datalad (v1.1.4) package for Python (v 3.12)
 [https://www.datalad.org/](https://www.datalad.org/)
+
+Barker M, Chue Hong NP, Katz DS, Lamprecht AL, Martinez-Ortiz C, Psomopoulos F, Harrow J, Castro LJ, Gruenpeter M, Martinez PA, Honeyman T. Introducing the FAIR Principles for research software. Sci Data. 2022 Oct 14;9(1):622. doi: 10.1038/s41597-022-01710-x. PMID: 36241754; PMCID: PMC9562067.
+
+Newman, Aaron.  Neural Data Science in Python (2023).  From: https://neuraldatascience.io/intro.html#
+
+Smith, Brett.  A Quick Guide to GPLv3 (2022).  From: https://www.gnu.org/licenses/quick-guide-gplv3.html
+
+
