@@ -10,7 +10,7 @@
 
 This project explores the basic skills and considerations in displaying MRI images from DICOM files in a way that is useful to a user without coding experience, such as a medical researcher or clinician.  This provides the opportunity to consider and select the correct features and packages available in python, explore options in image display and study reconstruction, as well as creating a basic application to dynamically view and interact with the images.
 
-MRI data is stored in a variety of files formats, typically depending on the context in which the data is being used.  For example, in most medical and healthcare settings, MRI image data is in DICOM (Digital Imaging and Communications in Medicine) format, while in the research setting, a common format is NIFTI (Neuroimaging Informatics Technology Initiative).  Metadata for the images is stored in a separate header, which can be in TSV or JSON, as well. 
+MRI data is stored in a variety of file formats, typically depending on the context in which the data is being used.  For example, in most medical and healthcare settings, MRI image data is in DICOM (Digital Imaging and Communications in Medicine) format, while in the research setting, a common format is NIFTI (Neuroimaging Informatics Technology Initiative).  Metadata for the images is stored in a separate header, which can be in TSV or JSON, as well. 
 
 Written in Python 3.11 using Jupyter Notebook.  
 
