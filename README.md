@@ -37,7 +37,7 @@ The notebook and python files were written and tested in Python 3.11 with the fo
 
 ## Installation
 
-Download all files in src folder as well as dataset in data_public folder.  Download environment file (neuro_dataascience_env.yml) from envs folder.  Store in the same local or cloud directory.  Ensure python and dependencies are installed in notebook environment before running scripts and jupyter notebook.  Ensure dataset path is accessible to notebook. Refer to File Structure below in the next section.
+Download all files in src folder as well as dataset in data_public folder.  Download environment file (neuro_dataascience_env.yml) from envs folder.  Store in the same local or cloud directory.  Ensure python and dependencies are installed in notebook environment before running scripts and jupyter notebook.  Ensure dataset path is accessible to notebook. Refer to File Structure below in the next section.  
 
 # File Structure
 
@@ -105,7 +105,11 @@ project----
 
 ## Unit Testing
 
-The test_functions.py file contains example unit tests on the app methods in app_functions.py.  Requires unittest library.  Can be launched from the terminal using "python3 -m test_functions" from the test directory.  
+The test_functions.py file contains example unit tests on the app methods in app_functions.py.  Requires unittest library.  Can be launched from the terminal using "python3 -m test_functions" from the tests directory.  
+
+## Running the notebook
+
+When running the notebook, 
 
 ## Feature Requests and Bugs
 
